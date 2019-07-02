@@ -1,10 +1,59 @@
 int main(void) {
-  int y = 0;
+  // wasProblem();
+  // attempt();
+  example1();
+  example2();
+}
 
+// Attempt to understand
+void attempt(void) {
+  int x;
+
+  if(rand()){
+    x = 3;
+  } else {
+    x = 7;
+  }
+
+  int y = x;
+}
+
+// Simple example (employing MustBeEqual)
+void example1(void) {
+  int a[42];
+  int i = 0;
+  int x;
+
+  while(i < 42) {
+    a[i] = 0;
+    int v = i;
+    x = a[v];
+    i++;
+  }
+}
+
+// Simple example (employing MayBeEqual / MayBeSmaller)
+void example2(void) {
+  int a[42];
+  int i = 0;
+
+  while(i<=9) {
+    a[i] = 9;
+    int j = i+5;
+    a[j] = 42;
+    
+    // Here we know a[i] is 9 when we have MayBeEqual but not
+    // about the part to the left of i unless we also have MayBeSmaller
+    i++;
+  }
+}
+
+void wasProblem() {
+  int y = 0;
   int x;
 
   if(x == 0) {
-    y = 2; // if octagon and base analysis are run together, this is reported as unreachable
+    y = 2; // if octagon and base analysis are run together, this was reported as unreachable
   } else {
     y = 3;
   }
