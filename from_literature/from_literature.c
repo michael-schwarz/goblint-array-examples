@@ -7,7 +7,7 @@ void exampleGopan2005Fig8() {
   // Added
   int n = 42;
 
-  int a[n];
+  int a[42]; // Adapted so array actually has constant size
   int i = 0;
 
   while(i < n) {
@@ -22,7 +22,7 @@ void exampleGopan2005Fig9(int a[], int b[]) {
   // Added
   int n = 42;
 
-  int c[n];
+  int c[42]; // Adapted so array actually has constant size
 
   int i = 0;
   int j = 0;
@@ -183,7 +183,7 @@ void cousot2011Fig4(int a[], int m, int b[], int n) {
 void cousot2011Fig5() {
   int n = 10;
   int i = 0;
-  int a[n];
+  int a[10];   // Adapted so array actually has constant size
 
   while(i < n) {
     a[i] = 0;
