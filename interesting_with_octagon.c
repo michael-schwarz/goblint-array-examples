@@ -10,6 +10,7 @@ int main(void) {
   example3();
   example4();
   example5();
+  example6();
 
   p1();
   p2();
@@ -143,6 +144,24 @@ void example5(void) {
     }
   }
 }
+
+void example6(void) {
+  int a[42];
+  int i = 0;
+  int j = i;
+
+  while(i < 22) {
+    a[i] = 0;
+    i++;
+    j = i;
+    a[j-1] = 0;
+    a[j] = 0;
+    j++;      // Octagon knows -1 <= i-j <= -1
+    i = j;    // We lose partitioning here because we don't know how far the move has been, ideally we would want to know this here. Because we can determine that (j-i == -1)
+    int dontcare = 5812;
+  }
+}
+
 
 
 void p1(void) {
