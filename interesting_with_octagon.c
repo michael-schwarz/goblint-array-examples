@@ -6,6 +6,7 @@ int main(void) {
   example1();
   example2();
   example2a();
+  example2b();
 
   example3();
   example4();
@@ -64,10 +65,20 @@ void example2(void) {
   while(i<=9) {
     a[i] = 9;
     int j = i+5;
-    a[j] = 42;
+    // a[j] = 42;
     
-    // Here we know a[i] is 9 when we have MayBeEqual but not
-    // about the part to the left of i unless we also have MayBeSmaller
+    // Here we know a[i] is 9 when we have MayBeEqual
+    assert(a[i] == 9);
+    
+    // but only about the part to the left of i if we also have MayBeSmaller
+    if(i>0) {
+      int k = a[i-1];
+      assert(k == 9);
+
+      int l = a[0];
+      assert(l == 9);
+    }
+
     i++;
   }
 }
@@ -83,8 +94,37 @@ void example2a(void) {
     j = i+5;
     a[j] = 42;
     
-    // Here we know a[i] is 9 when we have MayBeEqual but not
-    // about the part to the left of i unless we also have MayBeSmaller
+    // Here we know a[i] is 9 when we have MayBeEqual
+    assert(a[i] == 9);
+    
+    // but only about the part to the left of i if we also have MayBeSmaller
+    if(i>0) {
+      assert(a[i-1] == 9);
+    }
+
+    i++;
+  }
+}
+
+// Just like the example before except that it tests correct behavior when operands for + are reversed
+void example2b(void) {
+  int a[42];
+  int j;
+  int i = 0;
+
+  while(i<=9) {
+    a[i] = 9;
+    j = 5+i;
+    a[j] = 42;
+    
+    // Here we know a[i] is 9 when we have MayBeEqual
+    assert(a[i] == 9);
+    
+    // but only about the part to the left of i if we also have MayBeSmaller
+    if(i>0) {
+      assert(a[i-1] == 9);
+    }
+
     i++;
   }
 }
