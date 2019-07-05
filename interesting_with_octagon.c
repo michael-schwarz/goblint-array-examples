@@ -3,10 +3,12 @@ int main(void) {
 
   wasProblem();
   attempt();
+
   example1();
   example2();
   example2a();
   example2b();
+  example2c();
 
   example3();
   example4();
@@ -126,6 +128,24 @@ void example2b(void) {
     }
 
     i++;
+  }
+}
+
+// Like example before but iterating backwards
+void example2c(void) {
+  int a[42];
+  int j;
+  int i = 41;
+
+  while(i > 8) {
+    a[i] = 7;
+    a[i-2] = 31;
+
+    if(i < 41) {
+      assert(a[i+1] == 7);
+    }
+
+    i--;
   }
 }
 
