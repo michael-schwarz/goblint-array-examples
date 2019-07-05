@@ -160,6 +160,14 @@ void example3(void) {
     int j = i;
     a[j] = 0;
     i++;
+
+    assert(a[i-1] == 0);
+    assert(a[j] == 0);
+
+    if (i>1) {
+      assert(a[i-2] == 0);
+      assert(a[j-1] == 0); // We know 1 <= i-j <= 1 here, it would be interesting to leverage this here
+    }
   }
 }
 
