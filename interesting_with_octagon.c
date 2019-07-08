@@ -4,6 +4,9 @@ int main(void) {
   wasProblem();
   attempt();
 
+  checkMayBeSmaller();
+  checkMayBeSmaller2();
+
   example1();
   example2();
   example2a();
@@ -19,7 +22,7 @@ int main(void) {
   p2();
 }
 
-// Examples from https://www-apr.lip6.fr/~mine/publi/article-mine-HOSC06.pdf
+// Example from https://www-apr.lip6.fr/~mine/publi/article-mine-HOSC06.pdf
 void mineEx1(void) {
   int X = 0;
   int N = rand();
@@ -43,6 +46,90 @@ void attempt(void) {
   int y = x;
 }
 
+void checkMayBeSmaller(void) {
+  int a[20];
+  int i = 0;
+  int j = 0;
+  int top;
+  int z;
+
+  // Necessary so we can not answer the queries below from the base domain
+  // and actually test the behavior of the octagons
+  int between1and8;
+  if(between1and8 < 1) {
+    between1and8 = 1;
+  }
+
+  if(between1and8 > 8) {
+    between1and8 = 8;
+  }
+
+  while(i < 20) {
+    a[i] = 0;
+    i++;
+  }
+
+  while(j < between1and8) {
+    a[j] = 1;
+    j++;
+  }
+
+  a[j] = 2; // a -> (j,([1,1],[2,2],[0,0]))
+
+  if(top) {
+    z = j;
+  } else {
+    z = j-1;
+  }
+
+  // Values that may be read are 1 or 2
+  assert(a[z] == 1); //unknown
+  assert(a[z] == 2); //unknown
+  assert(a[z] == 0); //fail
+}
+
+void checkMayBeSmaller2(void) {
+  int a[20];
+  int i = 0;
+  int j = 0;
+  int top;
+  int z;
+
+  // Necessary so we can not answer the queries below from the base domain
+  // and actually test the behavior of the octagons
+  int between1and8;
+  if(between1and8 < 1) {
+    between1and8 = 1;
+  }
+
+  if(between1and8 > 8) {
+    between1and8 = 8;
+  }
+
+  while(i < 20) {
+    a[i] = 0;
+    i++;
+  }
+
+  while(j < between1and8) {
+    a[j] = 2;
+    j++;
+  }
+
+  a[j] = 1; // a -> (j,([2,2],[1,1],[0,0]))
+
+  if(top) {
+    z = j;
+  } else {
+    z = j+1;
+  }
+
+  // Values that may be read are 1 or 0
+  assert(a[z] == 1); //unknown
+  assert(a[z] == 0); //unknown
+  assert(a[z] == 2); //fail
+}
+
 // Array related examples
 
 // Simple example (employing MustBeEqual)
@@ -55,6 +142,7 @@ void example1(void) {
     a[i] = 0;
     int v = i;
     x = a[v];
+    assert(x == 0);
     i++;
   }
 }
@@ -166,7 +254,7 @@ void example3(void) {
 
     if (i>1) {
       assert(a[i-2] == 0);
-      assert(a[j-1] == 0); // We know 1 <= i-j <= 1 here, it would be interesting to leverage this here
+      assert(a[j-1] == 0);
     }
   }
 }
