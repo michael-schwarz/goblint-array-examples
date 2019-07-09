@@ -31,6 +31,16 @@ void mineEx1(void) {
   while(X < N) {
     X++;
   }
+
+  assert(X-N == 0);
+  assert(X==N);
+
+  if(X == N) {
+    N = 8;
+  } else {
+    // is dead code but if that is detected or not depends on what we do in branch
+    N = 42;
+  }
 }
 
 // Attempt to understand
@@ -306,16 +316,35 @@ void example6(void) {
   int i = 0;
   int j = i;
 
-  while(i < 22) {
+  int N;
+
+  if(N < 5) {
+    N = 5;
+  }
+  if(N > 40) {
+    N = 40;
+  }
+ 
+
+  while(i < N) {
     a[i] = 0;
     i++;
     j = i;
     a[j-1] = 0;
     a[j] = 0;
     j++;      // Octagon knows -1 <= i-j <= -1
-    i = j;    // We lose partitioning here because we don't know how far the move has been, ideally we would want to know this here. Because we can determine that (j-i == -1)
-    int dontcare = 5812;
+    i = j;    // Without octagons, we lose partitioning here because we don't know how far the move has been
+  
+    assert(a[i-1] == 0);
+    assert(a[i-2] == 0);
   }
+
+  j = 0;
+  while(j < N) {
+    assert(a[j] == 0);
+    j++;
+  }
+
 }
 
 
