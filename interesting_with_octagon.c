@@ -378,4 +378,7 @@ void wasProblem() {
   } else {
     y = 3;
   }
+
+  // Octagon threw an exception on this
+  int t = x + x;
 }
