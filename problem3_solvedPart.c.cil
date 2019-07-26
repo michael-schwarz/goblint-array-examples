@@ -1,0 +1,48 @@
+int main(int argc, char const **argv)
+{
+    int i;
+    int j;
+    int nGroups;
+    int inUse16[16];
+    int f;
+
+    // Array is needed
+    // Because it seems to be a problem that only occurs when base is run in path_sens mode
+    // Also making octagon path sensitive is not the solution
+    // It depends on expRelation being active as well (????!!!!) because we need the array to be partitioned
+    // Problem arises when states that should be joined are not for verifying if it is a solution
+
+    // The problem seems to be that should_join is not applied for verifying, leading to comparing states that ought not to be compared (?!)
+
+    // nGroups is neccessary to see a problem (?!)
+    nGroups = 2;
+
+
+    i = 0;
+
+
+
+    while (1) {
+
+        if(rand()) {
+            nGroups = 3;
+        }
+
+        if (i < 16) {
+            inUse16[i] = 0;
+            j = 0;
+            while(j < 8) {
+                f = rand();
+                j++;
+            }
+
+            i++;
+        }
+        else {
+            goto while_break;
+        }
+    }
+
+    while_break: /* CIL Label */;
+    return (0);
+}
