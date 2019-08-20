@@ -165,7 +165,7 @@ void example2(void) {
   while(i<=9) {
     a[i] = 9;
     int j = i+5;
-    // a[j] = 42;
+    a[j] = 42;
     
     // Here we know a[i] is 9 when we have MayBeEqual
     assert(a[i] == 9);
@@ -252,6 +252,7 @@ void example3(void) {
   int a[40];
   int i = 0;
 
+  // This is a dirty cheat to get the array to be partitioned before entering the loop
   a[i] = 0;
 
   while(i < 42) {
@@ -269,7 +270,6 @@ void example3(void) {
   }
 }
 
-// Does not currently work as desired, ideally we would use the condition to gain more information in the Octagon domain
 void example4(void) {
   int a[42];
   int i = 0;
@@ -345,28 +345,6 @@ void example6(void) {
     j++;
   }
 
-}
-
-
-
-void p1(void) {
-  int j = 0;
-  int i = 0;
-
-  while(i<=9) {
-    j = 5;
-    i++;
-  }
-}
-
-void p2(void) {
-  int k;
-  int h = 0;
-
-  while(h<=9) {
-    h++;
-    k=h;
-  }
 }
 
 void wasProblem() {
