@@ -1,24 +1,21 @@
-void close_stdout(void) {
-
-}
+char buf2[67];
 
 int main(int argc, char **argv)
 {
-  char *rpl_optarg;
-  int rpl_optopt;
   int human_output_opts;
   int to_block_size;
   char buf1[67];
 
   int from_block_size = 1;
 
-  char *p;
   int exponent;
   int exponent_max;
   int buflen;
   int power;
   
-  memmove((void *)p, (void const *)buf1, 67);
+  memmove((void *)buf2, (void const *)buf1, 67);
+
+  int bla = 18;
 
   if (human_output_opts & 128)
   {

@@ -5,8 +5,8 @@ int main(void) {
   test3();
   test4();
   test5();
+  test6();
 }
-
 
 void test1(void) {
   // This test works with both slr3 and new
@@ -79,5 +79,21 @@ void test5(void) {
   while(i < 10) {
     array[i][i] = 42;
     i++;
+  }
+}
+
+// Combines backwards- and forwards-iteration
+void test6(void) {
+  int array[10][10];
+  int i = 9;
+  while(i >= 0) {
+    int j =0;
+
+    while(j < 10) {
+      array[i][j] = 4711;
+      j++;
+    }
+
+    i--;
   }
 }
