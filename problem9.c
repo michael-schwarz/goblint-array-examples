@@ -5,6 +5,7 @@ int main(int argc, char **argv)
   int human_output_opts;
   int to_block_size;
   char buf1[67];
+  char v;
 
   int from_block_size = 1;
 
